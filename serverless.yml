@@ -1,0 +1,42 @@
+service: Line
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: ap-northeast-1
+
+functions:
+  wedding:
+    handler: handler.line
+    events:
+      - http:
+           path: line
+           method: get
+      - http:
+           path: line
+           method: post
+
+resources:
+  Resources:
+    # DynamoDBの構築
+    DynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        # キーの型を指定
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+
+        # キーの種類を指定（ハッシュorレンジキー）
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        # プロビジョニングするキャパシティーユニットの設定
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        # テーブル名の指定
+        TableName: LineMassageTable
