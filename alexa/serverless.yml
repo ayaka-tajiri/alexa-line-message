@@ -1,0 +1,13 @@
+service: WeddingPartySkill
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: ap-northeast-1
+
+functions:
+  wedding-party:
+    handler: handler.handler
+    events:
+      - alexaSkill: amzn1.ask.skill.787a6b59-b53f-4dd3-970f-d836be17f15f
