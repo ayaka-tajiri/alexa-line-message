@@ -10,4 +10,4 @@ functions:
   wedding-party:
     handler: handler.handler
     events:
-      - alexaSkill: amzn1.ask.skill.787a6b59-b53f-4dd3-970f-d836be17f15f
+      - alexaSkill: スキルIDを記載
