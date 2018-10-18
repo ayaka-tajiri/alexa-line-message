@@ -1,4 +1,4 @@
-service: WeddingPartySkill
+service: MessageSkill
 
 provider:
   name: aws
